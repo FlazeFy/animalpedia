@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 
 // Components
-import GetAnimalHeader from '@/components/containers/animal_header'
+import GetAnimalHeaderContainer from '@/components/containers/animal_header'
 
 export default function GetAllAnimalHeader({ctx}) {
     //Initial variable
@@ -43,15 +43,17 @@ export default function GetAllAnimalHeader({ctx}) {
         )
     } else {
         return (
-            <> 
+            <div className='row'> 
                  {
                     items.map((data, i, idx) => {
                         return (
-                            <GetAnimalHeader builder={data}/>
+                            <div className='col-lg-3 col-md-4 col-sm-12' key={i}>
+                                <GetAnimalHeaderContainer builder={data}/>
+                            </div>
                         );
                     })
                 }
-            </>
+            </div>
         )
     }
 }

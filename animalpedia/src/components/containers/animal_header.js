@@ -5,7 +5,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSkull, faWarning } from "@fortawesome/free-solid-svg-icons"
 
-export default function GetAnimalHeader({builder}) {
+export default function GetAnimalHeaderContainer({builder}) {
     return (
         <div className={container.animal_gridbox}>
             <div className={container.animal_hebox}>
