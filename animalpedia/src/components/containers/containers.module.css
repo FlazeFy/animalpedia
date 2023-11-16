@@ -1,0 +1,38 @@
+/* Get animal header */
+.animal_gridbox {
+    text-align: center;
+    width: 280px;
+    height: 280px;
+}
+.animal_hebox {
+    border-radius: var(--roundedCircle);
+    border: var(--spaceXXSM) solid var(--primaryColor);
+    cursor: pointer;
+    margin-bottom: var(--spaceLG);
+    position: relative;
+}
+.animal_hebox_img {
+    width: 100%;
+    border-radius: var(--roundedCircle);
+}
+.animal_gridbox h4 {
+    font-weight: bold;
+    margin-bottom: var(--spaceMini);
+}
+.animal_gridbox h6 {
+    font-weight: 500;
+    font-size: var(--textLG);
+    color: var(--shadowColor);
+}
+.animal_hebox_props {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background: var(--successBG);
+    padding: var(--spaceXSM) var(--spaceSM);
+    border-radius: var(--roundedMD);
+    border: 3.5px solid var(--primaryColor);
+}
+.animal_zone_icon {
+    height: 36px;
+}

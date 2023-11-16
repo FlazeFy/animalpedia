@@ -36,14 +36,10 @@
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
     background:  var(--primaryColor);
-    color: var(--whiteSmoke) !important;
-}
-.navbar a:hover{
-    background:  var(--primaryColor);
-    color: var(--whiteSmoke) !important;
+    color:var(--whiteColor);
 }
 .navbar .nav-button{
-    color:white;
+    color:var(--whiteColor);
     margin-top: var(--spaceXMD);
     margin-left: var(--spaceXMD);
     cursor:pointer;

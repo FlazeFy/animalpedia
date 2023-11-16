@@ -5,6 +5,6 @@ import GetNavbar from "@/components/bars/navbar"
 
 export default function NewsPage() {
     return <>
-        <GetNavbar active="collection"/>
+        <GetNavbar active="news"/>
     </>
 }
