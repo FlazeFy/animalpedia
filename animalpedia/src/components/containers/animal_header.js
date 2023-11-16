@@ -11,32 +11,32 @@ export default function GetAnimalHeader({builder}) {
             <div className={container.animal_hebox}>
                 <div className={container.animal_hebox_props}>
                     {
-                        builder['animal_zone'] == "Africa" ?
+                        builder['animals_zone'] == "Africa" ?
                             <img src="/assets/icons/zone_africa.png" className={container.animal_zone_icon} title="Africa"></img>
-                        : builder['animal_zone'] == "Asia & Oceania" ?
+                        : builder['animals_zone'] == "Asia & Oceania" ?
                             <img src="/assets/icons/zone_asia.png" className={container.animal_zone_icon} title="Asia & Oceania"></img>
-                        : builder['animal_zone'] == "Europe" ?
+                        : builder['animals_zone'] == "Europe" ?
                             <img src="/assets/icons/zone_europe.png" className={container.animal_zone_icon} title="Europe"></img>
-                        : builder['animal_zone'] == "America" ?
+                        : builder['animals_zone'] == "America" ?
                             <img src="/assets/icons/zone_america.png" className={container.animal_zone_icon} title="America"></img>
                         :
                             <></>
                     }
                     {
-                        builder['animal_status'] == "Near Threatened" || builder['animal_status'] == "Least Concern" ?
+                        builder['animals_status'] == "Near Threatened" || builder['animals_status'] == "Least Concern" ?
                             <></>
-                        : builder['animal_status'] == "Vulnerable" || builder['animal_status'] == "Endangered" || builder['animal_status'] == "Critically Endangered" ?
-                            <FontAwesomeIcon icon={faWarning} size="2x" title={builder['animal_status']} style={{marginLeft:"10px", marginBottom:"-7.5px"}}/>
-                        : builder['animal_status'] == "Extinct" || builder['animal_status'] == "Extinct in the Wild" ?
-                            <FontAwesomeIcon icon={faSkull} size="2x" title={builder['animal_status']} style={{marginLeft:"10px", marginBottom:"-7.5px"}}/>
+                        : builder['animals_status'] == "Vulnerable" || builder['animals_status'] == "Endangered" || builder['animals_status'] == "Critically Endangered" ?
+                            <FontAwesomeIcon icon={faWarning} size="2x" title={builder['animals_status']} style={{marginLeft:"10px", marginBottom:"-7.5px"}}/>
+                        : builder['animals_status'] == "Extinct" || builder['animals_status'] == "Extinct in the Wild" ?
+                            <FontAwesomeIcon icon={faSkull} size="2x" title={builder['animals_status']} style={{marginLeft:"10px", marginBottom:"-7.5px"}}/>
                         :
                             <></>
                     }
                 </div>
-                <img className={container.animal_hebox_img} src={builder['animal_img_url']}></img>
+                <img className={container.animal_hebox_img} src={builder['animals_image_url']}></img>
             </div>
-            <h4>{builder['animal_name']}</h4>
-            <h6>{builder['animal_latin_name']}</h6>
+            <h4>{builder['animals_name']}</h4>
+            <h6>{builder['animals_latin_name']}</h6>
         </div>
     )
 }
