@@ -1,14 +1,14 @@
 "use client"
 
 // Components
-import GetNewsContainer from "@/components/containers/news"
 import GetNavbar from "@/components/bars/navbar"
+import GetAllNewsHeader from "./usecases/getAllAnimalHeaders"
 
 export default function NewsPage() {
     return <>
         <GetNavbar active="news"/>
         <div className="content-grid">
-            <GetNewsContainer/>
+            <GetAllNewsHeader ctx="get_all_news_header"/>
         </div>
     </>
 }

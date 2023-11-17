@@ -71,3 +71,17 @@ export const getUTCHourOffset = (val, type) => {
         throw error
     }
 }
+
+export const removeHTMLTags = (val) => {
+    try {
+        if ((val === null) || (val ==='')){
+            return "<span class='fst-italic'>No description provided</span>"
+        } else {
+            val = val.toString()
+        }
+            
+        return val.replace( /(<([^>]+)>)/ig, '')
+    } catch (error) {
+        throw error
+    }
+}

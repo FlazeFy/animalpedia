@@ -43,6 +43,7 @@
     border: var(--spaceMini) solid var(--primaryColor);
     border-radius: var(--roundedJumbo);
     padding: var(--spaceMD);
+    margin-bottom: var(--spaceLG);
 }
 .news_nebox_image {
     width: 100%;
