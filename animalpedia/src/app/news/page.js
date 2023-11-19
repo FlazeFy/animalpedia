@@ -2,7 +2,7 @@
 
 // Components
 import GetNavbar from "@/components/bars/navbar"
-import GetAllNewsHeader from "./usecases/getAllAnimalHeaders"
+import GetAllNewsHeader from "./usecases/getAllNewsHeaders"
 
 export default function NewsPage() {
     return <>
