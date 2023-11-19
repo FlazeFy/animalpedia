@@ -1,10 +1,7 @@
 .manage_btn {
-    background: var(--primaryBG);
-    color: var(--whiteBG);
+    background: var(--primaryColor);
+    color: var(--whiteColor);
     padding: var(--spaceMD) var(--spaceLG);
     border: none;
     border-radius: var(--roundedSM);
-}
-.manage_btn:hover {
-    background: var(--successBG);
 }

@@ -1,5 +1,5 @@
 import { isNumInRange } from "../../modules/helpers/math";
-import navbar from "../navbar/navbar.module.css"
+import navbar from "../bars/navbar.module.css"
 
 export default function PageBar({curr, max, ctx}) {
     function navigate(idx, ctx){

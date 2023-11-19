@@ -2,9 +2,7 @@ import React from 'react'
 
 import PageBar from '../bars/page_bar'
 import GetOrdering from '../controls/ordering'
-import GetLimit from '../controls/limit'
 import GetManageModal from '../modals/manage'
-import GetSearch from '../controls/search'
 
 export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx}) {
     function getExtraDesc(ext, val){
@@ -21,9 +19,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
 
     return (
         <div className='custom-tbody'>
-            <GetSearch placeholder={"test"} ctx={ctx}/>
             <GetOrdering ctx={ctx}/>
-            <GetLimit ctx={ctx} type={"table"}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>

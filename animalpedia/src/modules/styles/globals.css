@@ -64,3 +64,10 @@
 .grid-item {
   margin-bottom: var(--spaceLG);
 }
+
+table th{
+  font-weight: normal;
+}
+table td{
+  color: var(--primaryColor);
+}
