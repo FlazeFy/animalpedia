@@ -1,12 +1,13 @@
 import React from 'react'
 import modal from './modals.module.css'
+import Axios from "axios"
 
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
 
-export default function GetManageModal({builder, items, id}) {
+export default function GetManageModal({builder, items, id, funDel}) {
     return (
         <>
             <button className={modal.manage_btn} data-bs-toggle="modal" data-bs-target={"#manageModal"+id}><FontAwesomeIcon icon={faEdit}/></button>
@@ -15,7 +16,7 @@ export default function GetManageModal({builder, items, id}) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Manage</h5>
-                            <button type="button" className="btn-close-modal" data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
+                            <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
                         </div>
                         <div className="modal-body">
                             {
@@ -23,7 +24,7 @@ export default function GetManageModal({builder, items, id}) {
                                     if(build['object_name'] != null && build['object_name'] != "period"){
                                         return (
                                             <div key={j}>
-                                                <label style={{color:"var(--primaryBG)"}}>{build['column_name']}</label>
+                                                <label className='form-lable'>{build['column_name']}</label>
                                                 <input className='form-control mb-2' defaultValue={items[build['object_name']]}></input>
                                             </div>
                                         );
@@ -32,7 +33,7 @@ export default function GetManageModal({builder, items, id}) {
                             }
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#deleteModal"+id}>Delete</button>
+                            {/* <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target={"#deleteModal"+id}>Delete</button>
                             <div className="modal fade" id={"deleteModal"+id}  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div className="modal-dialog">
                                     <div className="modal-content">
@@ -44,13 +45,14 @@ export default function GetManageModal({builder, items, id}) {
                                             <p>Are you sure want to delete this data?</p>
                                         </div>
                                         <div className="modal-footer">
-                                            <button type="button" className="btn btn-danger">Delete</button>
+                                            <button onClick={deleteAnimal} className="btn btn-danger">Delete</button>
                                             <button type="button" className="btn btn-primary">Save Changes</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <button type="button" className="btn btn-primary">Save Changes</button>
+                            </div> */}
+                            <button onClick={funDel} className="btn btn-danger">Delete</button>
+                            <button type="button" className="btn btn-success">Save Changes</button>
                         </div>
                     </div>
                 </div>

@@ -55,7 +55,9 @@
   --greyColor : #C3C3C3;
   --shadowColor : #808080;
 }
-
+body {
+  background: var(--blackColor) !important;
+}
 .content-grid {
   width: 1280px;
   margin-inline: auto;
@@ -65,9 +67,29 @@
   margin-bottom: var(--spaceLG);
 }
 
-table th{
-  font-weight: normal;
+.btn {
+  border: none !important;
 }
-table td{
-  color: var(--primaryColor);
+
+.btn-danger {
+  background: var(--warningBG) !important;
+}
+.btn-primary {
+  background: var(--primaryColor) !important;
+}
+.btn-info {
+  background: var(--infoBG) !important;
+}
+.btn-success {
+  background: var(--successBG) !important;
+}
+
+.form-lable {
+  font-weight: 500;
+  margin-top: var(--spaceSM);
+  margin-bottom: var(--spaceMini);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primaryColor) !important;
 }

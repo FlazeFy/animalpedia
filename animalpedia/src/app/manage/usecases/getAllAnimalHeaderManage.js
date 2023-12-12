@@ -95,7 +95,7 @@ export default function GetAllAnimalHeaderManage({ctx}) {
         return (
             <> 
                 <h2>{getCleanTitleFromCtx(ctx)}</h2>
-                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Animal"}/>  
+                <GetGeneralTable builder={builder} items={items} maxPage={maxPage} currentPage={currPage} ctx={"Animal"} urlDel={"http://127.0.0.1:1323/api/v1/animal/by/"}/>  
             </>
         )
     }

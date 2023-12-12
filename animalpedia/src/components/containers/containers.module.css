@@ -17,12 +17,13 @@
 }
 .animal_gridbox h4 {
     font-weight: bold;
+    color: var(--primaryColor);
     margin-bottom: var(--spaceMini);
 }
 .animal_gridbox h6 {
     font-weight: 500;
     font-size: var(--textLG);
-    color: var(--shadowColor);
+    color: var(--whiteColor) !important;
 }
 .animal_hebox_props {
     position: absolute;
@@ -60,6 +61,7 @@
 }
 .news_header_desc {
     overflow: hidden;
+    color: var(--whiteColor);
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 9;

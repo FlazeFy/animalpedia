@@ -3,6 +3,8 @@ import { useEffect } from "react";
 
 import '../modules/styles/globals.css'
 import '../modules/styles/navbar.css'
+import '../modules/styles/table.css'
+
 import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'

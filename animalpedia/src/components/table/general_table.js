@@ -1,10 +1,11 @@
 import React from 'react'
+import Axios from "axios"
 
 import PageBar from '../bars/page_bar'
 import GetOrdering from '../controls/ordering'
 import GetManageModal from '../modals/manage'
 
-export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx}) {
+export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx, urlDel}) {
     function getExtraDesc(ext, val){
         if(ext != null){
             if(ext['pos'] == "start"){
@@ -17,23 +18,27 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
         }
     }
 
+    const deleteItem = async (e, url) => {
+        e.preventDefault();
+        try {
+            await Axios.delete(url)
+        } catch (err) {
+            alert(err)
+        }
+        location.reload()
+    };
+
     return (
-        <div className='custom-tbody'>
+        <div>
             <GetOrdering ctx={ctx}/>
             <table className="table">
                 <thead>
                     <tr key={"a"}>
                     {
                         builder.map((val, i, index) => {
-                            if(i == 0){
-                                return (
-                                    <th scope="col" key={i}>{val['column_name']}</th>
-                                );
-                            } else {
-                                return (
-                                    <td key={i}>{val['column_name']}</td>
-                                );
-                            }
+                            return (
+                                <td key={i}><b>{val['column_name']}</b></td>
+                            );
                         })
                     }
                     </tr>
@@ -57,7 +62,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                             }
                                         } else {
                                             return (
-                                                <th key={j}><GetManageModal builder={builder} items={item} id={i}/></th>
+                                                <th key={j}><GetManageModal builder={builder} items={item} id={i} funDel={(e) => deleteItem(e, urlDel+item['slug'])}/></th>
                                             );
                                         }
                                     })
