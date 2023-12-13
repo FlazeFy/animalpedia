@@ -18,14 +18,14 @@ export default function GetAllAnimalHeaderManage({ctx}) {
 
     useEffect(() => {
         //Default config
-        const keyPage = sessionStorage.getItem("Table_Aircraft")
-        const keyOrder = sessionStorage.getItem("Table_order_Aircraft")
+        const keyPage = sessionStorage.getItem("Table_Animal")
+        const keyOrder = sessionStorage.getItem("Table_order_Animal")
 
         if(keyPage == null){
-            sessionStorage.setItem("Table_Aircraft", "1");
+            sessionStorage.setItem("Table_Animal", "1");
         }
         if(keyOrder == null){
-            sessionStorage.setItem("Table_order_Aircraft", "asc");
+            sessionStorage.setItem("Table_order_Animal", "asc");
         }
 
         fetch(`http://127.0.0.1:1323/api/v1/animal/${keyOrder}?page=${keyPage}`)

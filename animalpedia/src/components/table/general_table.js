@@ -4,6 +4,9 @@ import Axios from "axios"
 import PageBar from '../bars/page_bar'
 import GetOrdering from '../controls/ordering'
 import GetManageModal from '../modals/manage'
+import { removeHTMLTags, ucFirstChar } from '@/modules/helpers/converter'
+import { parseJSON } from '@/modules/helpers/decode'
+import GetButtonTag from '../buttons/tag'
 
 export default function GetGeneralTable({builder, items, maxPage, currentPage, ctx, urlDel}) {
     function getExtraDesc(ext, val){
@@ -51,14 +54,33 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                 {
                                     builder.map((build, j, ins) => {
                                         if(item[build['column_name']] != 'Manage' && item[build['object_name']] != null){
-                                            if(i == 0){
+                                            if(build['type_content'] == "html"){
                                                 return (
-                                                    <th scope="row" key={j}>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
+                                                    <th>{ucFirstChar(removeHTMLTags(item[build['object_name']]))}</th>
+                                                );
+                                            } else if(build['type_content'] == "tag"){
+                                                const tags = parseJSON(item[build['object_name']])
+                                                return (
+                                                    <th className='p-3'>
+                                                        {
+                                                            tags.map((tag, j, ins) => {
+                                                                return (
+                                                                    <GetButtonTag slug={tag['slug_name']} name={tag['tag_name']}/>
+                                                                );
+                                                            })
+                                                        }
+                                                    </th>
                                                 );
                                             } else {
-                                                return (
-                                                    <th key={j}>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
-                                                );
+                                                if(i == 0){
+                                                    return (
+                                                        <th scope="row" key={j}>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
+                                                    );
+                                                } else {
+                                                    return (
+                                                        <th key={j}>{getExtraDesc(build['extra_desc'], item[build['object_name']])}</th>
+                                                    );
+                                                }
                                             }
                                         } else {
                                             return (

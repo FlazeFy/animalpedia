@@ -50,6 +50,15 @@
     margin-left: var(--spaceXMD);
     cursor:pointer;
 }
+.nav-link.sub {
+    font-size: var(--spaceSM) !important;
+    color: var(--whiteColor) !important;
+}
+.nav-link.sub.active {
+    background: transparent !important;
+    border-bottom: 2px solid var(--primaryColor);
+    border-radius: 0;
+}
 @media (max-width: 1366px) {
     .navbar .dropdown .dropdown ul {
         left: -90%;
