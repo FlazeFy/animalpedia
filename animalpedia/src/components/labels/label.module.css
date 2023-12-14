@@ -1,0 +1,10 @@
+label.input{
+    float: left;
+    font-size: var(--textMD);
+    margin-bottom: 2px;
+}
+label.error{
+    font-size: var(--textXSM);
+    color: #D5534C;
+    margin: 0;
+}
