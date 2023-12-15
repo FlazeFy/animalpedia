@@ -1,12 +1,16 @@
+import GetFormTemplate from '@/components/containers/form'
 import React from 'react'
 import { useState, useEffect } from "react"
+import Axios from 'axios'
 
 // Component
-import GetGeneralTable from '../../../components/table/general_table'
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
+import modal from '../../../components/modals/modals.module.css'
 
-// Modules
-import { getLocal, storeLocal } from '../../../modules/storages/local'
+//Font awesome classicon
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAdd, faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
 
 export default function PostAnimal({ctx}) {
     //Initial variable
@@ -17,10 +21,18 @@ export default function PostAnimal({ctx}) {
     const [animalStatus, setAnimalStatus] = useState("")
     const [animalCategory, setAnimalCategory] = useState("")
 
+    const [resMsgAnimalName, setResMsgAnimalName] = useState("")
+    const [resMsgAnimalLatinName, setResMsgAnimalLatinName] = useState("")
+    const [resMsgAnimalRegion, setResMsgAnimalRegion] = useState("")
+    const [resMsgAnimalZone, setResMsgAnimalZone] = useState("")
+    const [resMsgAnimalStatus, setResMsgAnimalStatus] = useState("")
+    const [resMsgAnimalCategory, setResMsgAnimalCategory] = useState("")
+    const [resMsgAll, setResMsgAll] = useState("")
+
     const builder = [
         {
             type: 'input-text',
-            class: 'form-invisible',
+            class: 'form-control',
             label: 'Animal Name',
             placeholder: 'Type animal name',
             is_required: true,
@@ -33,7 +45,7 @@ export default function PostAnimal({ctx}) {
         },
         {
             type: 'input-text',
-            class: 'form-invisible',
+            class: 'form-control',
             label: 'Animal Latin Name',
             placeholder: 'Type animal latin name',
             is_required: true,
@@ -46,7 +58,7 @@ export default function PostAnimal({ctx}) {
         },
         {
             type: 'input-text',
-            class: 'form-invisible',
+            class: 'form-control',
             label: 'Animal Region',
             placeholder: 'Type animal region',
             is_required: true,
@@ -59,7 +71,7 @@ export default function PostAnimal({ctx}) {
         },
         {
             type: 'input-text',
-            class: 'form-invisible',
+            class: 'form-control',
             label: 'Animal Zone',
             placeholder: 'Type animal zone',
             is_required: true,
@@ -72,7 +84,7 @@ export default function PostAnimal({ctx}) {
         },
         {
             type: 'input-text',
-            class: 'form-invisible',
+            class: 'form-control',
             label: 'Animal Status',
             placeholder: 'Type animal status',
             is_required: true,
@@ -85,7 +97,7 @@ export default function PostAnimal({ctx}) {
         },
         {
             type: 'input-text',
-            class: 'form-invisible',
+            class: 'form-control',
             label: 'Animal Category',
             placeholder: 'Type animal category',
             is_required: true,
@@ -98,7 +110,7 @@ export default function PostAnimal({ctx}) {
         },
         {
             type: 'submit',
-            class: 'btn btn-submit rounded-pill',
+            class: 'btn btn-success rounded-pill',
             label: 'Submit',
             placeholder: null,
             toogle_disabled: false,
@@ -112,12 +124,15 @@ export default function PostAnimal({ctx}) {
     // Services
     const handleSubmit = async (e) => {
         try {
-        
-            if(response.trim() != ""){
-                e.preventDefault()
-                
+            const response = await Axios.postForm("http://127.0.0.1:1323/api/v1/animal", {
+                animalName, animalLatinName, animalRegion, animalZone, animalStatus, animalCategory
+            })
+            // location.reload()
+
+            if(response.data.status != 200){
+                return response.data.message
             } else {
-                location.reload()
+                return ""
             }
         } catch (error) {
             setResMsgAll(error)
@@ -126,8 +141,20 @@ export default function PostAnimal({ctx}) {
 
     return (
         <> 
-            <h2>{getCleanTitleFromCtx(ctx)}</h2>
-            <GetFormTemplate type={"single-line"} props={props} />
+            <button className={modal.manage_btn} data-bs-toggle="modal" data-bs-target={"#addModal"+ctx}><FontAwesomeIcon icon={faAdd}/> Add Animal</button>
+            <div className="modal fade" id={"addModal"+ctx} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">{getCleanTitleFromCtx(ctx)}</h5>
+                            <button type="button" className={modal.btn_close_modal} data-bs-dismiss="modal" aria-label="Close"><FontAwesomeIcon icon={faXmark}/></button>
+                        </div>
+                        <div className="modal-body">
+                            <GetFormTemplate type={"single-line"} props={builder} />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
