@@ -88,8 +88,18 @@ body {
   font-weight: 500;
   margin-top: var(--spaceSM);
   margin-bottom: var(--spaceMini);
+  color: var(--whiteColor);
+}
+.form-control {
+  background: transparent !important;
+  color: var(--whiteColor) !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--primaryColor) !important;
+}
+
+.modal-content {
+  border-radius: var(--roundedLG) !important;
+  background: var(--blackColor) !important;
 }
