@@ -1,8 +1,10 @@
 .control_box {
-    background: var(--secondaryBG);
+    background: var(--successBG);
     padding: var(--spaceSM);
     border-radius: var(--roundedSM);
     border: none;
+    color: var(--whiteColor);
+    margin-bottom: var(--spaceMD);
 }
 
 /* GetSearch */

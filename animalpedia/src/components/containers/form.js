@@ -7,13 +7,14 @@ export default function GetFormTemplate({type, props}) {
             <div key={type}>
                 <div className='row'>
                     {props.map((elmt, idx) => {
-                        if (elmt.type === 'input-text') {
+                        if (elmt.type === 'text' || elmt.type === 'number') {
                             return (
                                 <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
                                     <GetLabel title={elmt.label} type="input"/>
                                     <input placeholder={elmt.placeholder}
                                         className={elmt.class + " w-100"} 
                                         onChange={elmt.handleChange}
+                                        type={elmt.type}
                                     />
                                     <GetLabel title={elmt.errorMsg} type="error"/>
                                 </div>

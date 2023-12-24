@@ -31,7 +31,7 @@ export default function PostAnimal({ctx}) {
 
     const builder = [
         {
-            type: 'input-text',
+            type: 'text',
             class: 'form-control',
             label: 'Animal Name',
             placeholder: 'Type animal name',
@@ -44,7 +44,7 @@ export default function PostAnimal({ctx}) {
             errorMsg: resMsgAnimalName
         },
         {
-            type: 'input-text',
+            type: 'text',
             class: 'form-control',
             label: 'Animal Latin Name',
             placeholder: 'Type animal latin name',
@@ -57,7 +57,7 @@ export default function PostAnimal({ctx}) {
             errorMsg: resMsgAnimalLatinName
         },
         {
-            type: 'input-text',
+            type: 'text',
             class: 'form-control',
             label: 'Animal Region',
             placeholder: 'Type animal region',
@@ -70,7 +70,7 @@ export default function PostAnimal({ctx}) {
             errorMsg: resMsgAnimalRegion
         },
         {
-            type: 'input-text',
+            type: 'text',
             class: 'form-control',
             label: 'Animal Zone',
             placeholder: 'Type animal zone',
@@ -83,7 +83,7 @@ export default function PostAnimal({ctx}) {
             errorMsg: resMsgAnimalZone
         },
         {
-            type: 'input-text',
+            type: 'text',
             class: 'form-control',
             label: 'Animal Status',
             placeholder: 'Type animal status',
@@ -96,7 +96,7 @@ export default function PostAnimal({ctx}) {
             errorMsg: resMsgAnimalStatus
         },
         {
-            type: 'input-text',
+            type: 'text',
             class: 'form-control',
             label: 'Animal Category',
             placeholder: 'Type animal category',
@@ -124,10 +124,20 @@ export default function PostAnimal({ctx}) {
     // Services
     const handleSubmit = async (e) => {
         try {
-            const response = await Axios.postForm("http://127.0.0.1:1323/api/v1/animal", {
-                animalName, animalLatinName, animalRegion, animalZone, animalStatus, animalCategory
+            const data = new FormData();
+            data.append('animals_name', animalName);
+            data.append('animals_latin_name', animalLatinName);
+            data.append('animals_region', animalRegion);
+            data.append('animals_zone', animalZone);
+            data.append('animals_status', animalStatus);
+            data.append('animals_category', animalCategory);
+            
+            const response = await Axios.post("http://127.0.0.1:1323/api/v1/animal", data, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
             })
-            // location.reload()
+            location.reload()
 
             if(response.data.status != 200){
                 return response.data.message
@@ -141,7 +151,7 @@ export default function PostAnimal({ctx}) {
 
     return (
         <> 
-            <button className={modal.manage_btn} data-bs-toggle="modal" data-bs-target={"#addModal"+ctx}><FontAwesomeIcon icon={faAdd}/> Add Animal</button>
+            <button className={modal.manage_btn} data-bs-toggle="modal" data-bs-target={"#addModal"+ctx}><FontAwesomeIcon icon={faAdd}/> {getCleanTitleFromCtx(ctx)}</button>
             <div className="modal fade" id={"addModal"+ctx} aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
