@@ -1,5 +1,9 @@
 "use client"
+
+// Components
 import GetNavbar from "@/components/bars/navbar"
+
+// Usecases
 import GetAllNewsManage from "./usecases/getAllNewsManage"
 import PostNews from "./usecases/postNews"
 

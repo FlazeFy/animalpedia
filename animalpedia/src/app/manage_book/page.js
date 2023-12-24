@@ -1,5 +1,9 @@
 "use client"
+
+// Components
 import GetNavbar from "@/components/bars/navbar"
+
+// Usecases
 import GetAllAnimalHeaderManage from "./usecases/getAllAnimalHeaderManage"
 import PostAnimal from "./usecases/postAnimal"
 

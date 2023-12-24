@@ -2,6 +2,8 @@
 
 // Components
 import GetNavbar from "@/components/bars/navbar"
+
+// Usecases
 import GetAllNewsHeader from "./usecases/getAllNewsHeaders"
 
 export default function NewsPage() {
