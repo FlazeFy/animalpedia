@@ -1,8 +1,7 @@
-import { ucFirst } from "../../modules/helpers/typography"
-
 // Toast
 import CustomToast from "../modals/toast"
 import { toast } from 'react-toastify'
+import { ucFirstWord } from "@/modules/helpers/converter"
 
 export default function GetLimit({ctx, type}) {
     function navigate(ctx, ord){
@@ -82,7 +81,7 @@ export default function GetLimit({ctx, type}) {
     return (
         <div className="dropdown">
             <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                { sessionStorage.getItem(`${ucFirst(type)}_limit_${ctx}`) + " Item/Page" }
+                { sessionStorage.getItem(`${ucFirstWord(type)}_limit_${ctx}`) + " Item/Page" }
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">       
             {

@@ -103,3 +103,9 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--roundedLG) !important;
   background: var(--blackColor) !important;
 }
+
+/* Apexchart */
+.apexcharts-legend-text {
+  color: var(--whiteColor) !important;
+  font-size: var(--textSM);
+}

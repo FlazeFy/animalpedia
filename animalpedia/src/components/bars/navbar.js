@@ -13,7 +13,13 @@ export default function GetNavbar({active, subactive}) {
                 <li><a className={"nav-link " + getActive(active,"home")} href="/">Home</a></li>
                 <li><a className={"nav-link " + getActive(active,"book")} href="/book">Book</a></li>
                 <li><a className={"nav-link " + getActive(active,"news")} href="/news">News</a></li>
-                <li><a className={"nav-link " + getActive(active,"stats")} href="/stats">Stats</a></li>
+                <li>
+                    <a className={"nav-link mb-2 " + getActive(active,"stats")} data-bs-toggle="collapse" href="#collapseStats">Stats</a>
+                    <div className="collapse" id="collapseStats">
+                        <a className={"nav-link sub mb-2 " + getActive(subactive,"stats_animals")} href="/stats_animals">Stats Animals</a>
+                        <a className={"nav-link sub mb-2 " + getActive(subactive,"stats_news")} href="/stats_news">Stats News</a>
+                    </div>
+                </li>
                 <li>
                     <a className={"nav-link mb-2 " + getActive(active,"manage")} data-bs-toggle="collapse" href="#collapseManage">Manage</a>
                     <div className="collapse" id="collapseManage">
