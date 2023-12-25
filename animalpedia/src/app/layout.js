@@ -1,9 +1,11 @@
 "use client"
 import { useEffect } from "react";
 
+// CSS
 import '../modules/styles/globals.css'
 import '../modules/styles/navbar.css'
 import '../modules/styles/table.css'
+import '../modules/styles/button.css'
 
 import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.css'

@@ -18,6 +18,7 @@ export default function GetNavbar({active, subactive}) {
                     <div className="collapse" id="collapseStats">
                         <a className={"nav-link sub mb-2 " + getActive(subactive,"stats_animals")} href="/stats_animals">Stats Animals</a>
                         <a className={"nav-link sub mb-2 " + getActive(subactive,"stats_news")} href="/stats_news">Stats News</a>
+                        <a className={"nav-link sub mb-2 " + getActive(subactive,"stats_others")} href="/stats_others">Stats Others</a>
                     </div>
                 </li>
                 <li>

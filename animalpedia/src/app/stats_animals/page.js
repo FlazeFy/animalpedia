@@ -5,12 +5,13 @@ import GetNavbar from "@/components/bars/navbar"
 
 // Usecases
 import GetTotalAnimalCategory from "./usecases/get_total_animal_category"
+import GetTotalAnimalRegion from "./usecases/get_total_animal_region"
 import GetTotalAnimalStatus from "./usecases/get_total_animal_status"
 import GetTotalAnimalZone from "./usecases/get_total_animal_zone"
 
 export default function StatsAnimals() {
     return <>
-        <GetNavbar active="manage" subactive="manage_news"/>
+        <GetNavbar active="stats" subactive="stats_animals"/>
         <div className="content-grid">
             <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-12">
@@ -21,6 +22,9 @@ export default function StatsAnimals() {
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-12">
                     <GetTotalAnimalCategory ctx="get_total_animal_category"/>
+                </div>
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                    <GetTotalAnimalRegion ctx="get_total_animal_region"/>
                 </div>
             </div>
         </div>

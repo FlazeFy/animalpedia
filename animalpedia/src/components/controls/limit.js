@@ -80,7 +80,7 @@ export default function GetLimit({ctx, type}) {
 
     return (
         <div className="dropdown">
-            <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <a className="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 { sessionStorage.getItem(`${ucFirstWord(type)}_limit_${ctx}`) + " Item/Page" }
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">       

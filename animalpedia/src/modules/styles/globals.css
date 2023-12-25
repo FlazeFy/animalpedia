@@ -67,23 +67,6 @@ body {
   margin-bottom: var(--spaceLG);
 }
 
-.btn {
-  border: none !important;
-}
-
-.btn-danger {
-  background: var(--warningBG) !important;
-}
-.btn-primary {
-  background: var(--primaryColor) !important;
-}
-.btn-info {
-  background: var(--infoBG) !important;
-}
-.btn-success {
-  background: var(--successBG) !important;
-}
-
 .form-lable {
   font-weight: 500;
   margin-top: var(--spaceSM);
@@ -105,7 +88,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Apexchart */
-.apexcharts-legend-text {
+.apexcharts-legend-text  {
   color: var(--whiteColor) !important;
-  font-size: var(--textSM);
+  font-size: var(--textMD);
+}
+.apexcharts-text tspan {
+  fill: var(--whiteColor) !important;
+  font-size: var(--textMD);
 }
