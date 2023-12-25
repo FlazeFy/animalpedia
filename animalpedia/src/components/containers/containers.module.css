@@ -3,6 +3,7 @@
     text-align: center;
     width: 280px;
     height: 280px;
+    margin-bottom: calc(var(--spaceJumbo) * 3.5);
 }
 .animal_hebox {
     border-radius: var(--roundedCircle);

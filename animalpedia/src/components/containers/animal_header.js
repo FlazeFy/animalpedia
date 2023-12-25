@@ -12,13 +12,13 @@ export default function GetAnimalHeaderContainer({builder}) {
                 <div className={container.animal_hebox_props}>
                     {
                         builder['animals_zone'] == "Africa" ?
-                            <img src="/assets/icons/zone_africa.png" className={container.animal_zone_icon} title="Africa"></img>
+                            <img src="http://localhost:3000/assets/icons/zone_africa.png" className={container.animal_zone_icon} title="Africa"></img>
                         : builder['animals_zone'] == "Asia & Oceania" ?
-                            <img src="/assets/icons/zone_asia.png" className={container.animal_zone_icon} title="Asia & Oceania"></img>
+                            <img src="http://localhost:3000/assets/icons/zone_asia.png" className={container.animal_zone_icon} title="Asia & Oceania"></img>
                         : builder['animals_zone'] == "Europe" ?
-                            <img src="/assets/icons/zone_europe.png" className={container.animal_zone_icon} title="Europe"></img>
+                            <img src="http://localhost:3000/assets/icons/zone_europe.png" className={container.animal_zone_icon} title="Europe"></img>
                         : builder['animals_zone'] == "America" ?
-                            <img src="/assets/icons/zone_america.png" className={container.animal_zone_icon} title="America"></img>
+                            <img src="http://localhost:3000/assets/icons/zone_america.png" className={container.animal_zone_icon} title="America"></img>
                         :
                             <></>
                     }
@@ -33,9 +33,9 @@ export default function GetAnimalHeaderContainer({builder}) {
                             <></>
                     }
                 </div>
-                <img className={container.animal_hebox_img} src={builder['animals_image_url']}></img>
+                <img className={container.animal_hebox_img} src={builder['animals_img_url']}></img>
             </div>
-            <h4>{builder['animals_name']}</h4>
+            <h4>{builder['animals_zone']}</h4>
             <h6>{builder['animals_latin_name']}</h6>
         </div>
     )

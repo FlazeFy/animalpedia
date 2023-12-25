@@ -66,6 +66,11 @@ body {
 .grid-item {
   margin-bottom: var(--spaceLG);
 }
+.img-profile {
+  border-radius: var(--roundedCircle);
+  margin-top: var(--spaceLG);
+  border: var(--spaceXSM) solid var(--primaryColor);
+}
 
 .form-lable {
   font-weight: 500;

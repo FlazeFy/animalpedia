@@ -29,6 +29,7 @@ export default function GetNavbar({active, subactive}) {
                         <a className={"nav-link sub mb-2 " + getActive(subactive,"manage_dct")} href="/manage_dct">Manage Dictionary</a>
                     </div>
                 </li>
+                <li><a className={"nav-link " + getActive(active,"about")} href="/about">About</a></li>
             </ul>
             <i className="fa-solid fa-bars mobile-nav-toggle" title="Open NavBar"></i>
         </nav>

@@ -1,5 +1,6 @@
+// Components
 import GetLabel from '@/components/labels/label'
-import containers from './containers.module.css'
+import GetDropDownDctDynamic from '../others/dropdown'
 
 export default function GetFormTemplate({type, props}) {
     if (type == "single-line"){
@@ -16,6 +17,14 @@ export default function GetFormTemplate({type, props}) {
                                         onChange={elmt.handleChange}
                                         type={elmt.type}
                                     />
+                                    <GetLabel title={elmt.errorMsg} type="error"/>
+                                </div>
+                            )
+                        } else if (elmt.type === 'select') {
+                            return (
+                                <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
+                                    <GetLabel title={elmt.label} type="input"/>
+                                    <GetDropDownDctDynamic url={elmt.url} elmt={elmt}/>
                                     <GetLabel title={elmt.errorMsg} type="error"/>
                                 </div>
                             )

@@ -10,7 +10,7 @@ import modal from '../../../components/modals/modals.module.css'
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAdd, faEdit, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 
 export default function PostAnimal({ctx}) {
     //Initial variable
@@ -57,7 +57,7 @@ export default function PostAnimal({ctx}) {
             errorMsg: resMsgAnimalLatinName
         },
         {
-            type: 'text',
+            type: 'select',
             class: 'form-control',
             label: 'Animal Region',
             placeholder: 'Type animal region',
@@ -67,10 +67,11 @@ export default function PostAnimal({ctx}) {
             handleChange: (event) => {
                 setAnimalRegion(event.target.value)
             },
-            errorMsg: resMsgAnimalRegion
+            errorMsg: resMsgAnimalRegion,
+            url: 'http://127.0.0.1:1323/api/v1/dct/animal_region?page=1'
         },
         {
-            type: 'text',
+            type: 'select',
             class: 'form-control',
             label: 'Animal Zone',
             placeholder: 'Type animal zone',
@@ -80,10 +81,11 @@ export default function PostAnimal({ctx}) {
             handleChange: (event) => {
                 setAnimalZone(event.target.value)
             },
-            errorMsg: resMsgAnimalZone
+            errorMsg: resMsgAnimalZone,
+            url: 'http://127.0.0.1:1323/api/v1/dct/animal_zone?page=1'
         },
         {
-            type: 'text',
+            type: 'select',
             class: 'form-control',
             label: 'Animal Status',
             placeholder: 'Type animal status',
@@ -93,10 +95,11 @@ export default function PostAnimal({ctx}) {
             handleChange: (event) => {
                 setAnimalStatus(event.target.value)
             },
-            errorMsg: resMsgAnimalStatus
+            errorMsg: resMsgAnimalStatus,
+            url: 'http://127.0.0.1:1323/api/v1/dct/animal_status?page=1'
         },
         {
-            type: 'text',
+            type: 'select',
             class: 'form-control',
             label: 'Animal Category',
             placeholder: 'Type animal category',
@@ -106,7 +109,8 @@ export default function PostAnimal({ctx}) {
             handleChange: (event) => {
                 setAnimalCategory(event.target.value)
             },
-            errorMsg: resMsgAnimalCategory
+            errorMsg: resMsgAnimalCategory,
+            url: 'http://127.0.0.1:1323/api/v1/dct/animal_category?page=1'
         },
         {
             type: 'submit',
