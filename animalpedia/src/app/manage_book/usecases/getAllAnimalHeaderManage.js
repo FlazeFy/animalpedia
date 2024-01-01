@@ -52,6 +52,12 @@ export default function GetAllAnimalHeaderManage({ctx}) {
 
     const builder = [
         {
+            column_name: "Animal Image",
+            object_name: "animals_img_url",
+            extra_desc: null,
+            type_content: "image"
+        },
+        {
             column_name: "Animal Name",
             object_name: "animals_name",
             extra_desc: null

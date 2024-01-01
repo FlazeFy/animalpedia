@@ -35,7 +35,7 @@ export default function GetAnimalHeaderContainer({builder}) {
                 </div>
                 <img className={container.animal_hebox_img} src={builder['animals_img_url']}></img>
             </div>
-            <h4>{builder['animals_zone']}</h4>
+            <h4>{builder['animals_name']}</h4>
             <h6>{builder['animals_latin_name']}</h6>
         </div>
     )

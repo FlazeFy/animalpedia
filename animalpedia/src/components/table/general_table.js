@@ -71,6 +71,12 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                                         }
                                                     </th>
                                                 );
+                                            } else if(build['type_content'] == "image"){
+                                                return (
+                                                    <th className='p-3'>
+                                                        <img className='img img-fluid img-profile' style={{width:"75px", height:"75px", borderWidth:"2.5px"}} src={item[build['object_name']]}/>
+                                                    </th>
+                                                );
                                             } else {
                                                 if(i == 0){
                                                     return (

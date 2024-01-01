@@ -1,5 +1,6 @@
 // Components
 import GetLabel from '@/components/labels/label'
+import GetBreakLine from '../others/breakLine'
 import GetDropDownDctDynamic from '../others/dropdown'
 
 export default function GetFormTemplate({type, props}) {
@@ -17,6 +18,15 @@ export default function GetFormTemplate({type, props}) {
                                         onChange={elmt.handleChange}
                                         type={elmt.type}
                                     />
+                                    <GetLabel title={elmt.errorMsg} type="error"/>
+                                </div>
+                            )
+                        } else if (elmt.type === 'upload') {
+                            return (
+                                <div className='col-lg-12 col-md-12 col-sm-12 text-start mb-3' key={idx}>
+                                    <GetLabel title={elmt.label} type="input"/>
+                                    <GetBreakLine length={2}/>
+                                    <input className="form-control" type="file" onChange={elmt.handleChange} /> 
                                     <GetLabel title={elmt.errorMsg} type="error"/>
                                 </div>
                             )

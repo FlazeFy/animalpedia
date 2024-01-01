@@ -1,27 +1,31 @@
-import GetFormTemplate from '@/components/containers/form'
-import React from 'react'
-import { useState, useEffect } from "react"
+import React, { useEffect, useState } from "react"
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
+import { v4 } from "uuid"
 import Axios from 'axios'
 
 // Component
 import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 import modal from '../../../components/modals/modals.module.css'
+import GetFormTemplate from '@/components/containers/form'
 
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { storage } from "@/modules/configs/firebase"
 
 export default function PostAnimal({ctx}) {
     //Initial variable
     const [animalName, setAnimalName] = useState("")
     const [animalLatinName, setAnimalLatinName] = useState("")
+    const [animalImgUrl, setAnimalImgUrl] = useState(null)
     const [animalRegion, setAnimalRegion] = useState("")
     const [animalZone, setAnimalZone] = useState("")
     const [animalStatus, setAnimalStatus] = useState("")
     const [animalCategory, setAnimalCategory] = useState("")
 
     const [resMsgAnimalName, setResMsgAnimalName] = useState("")
+    const [resMsgAnimalImgUrl, setResMsgAnimalImgUrl] = useState("")
     const [resMsgAnimalLatinName, setResMsgAnimalLatinName] = useState("")
     const [resMsgAnimalRegion, setResMsgAnimalRegion] = useState("")
     const [resMsgAnimalZone, setResMsgAnimalZone] = useState("")
@@ -57,12 +61,31 @@ export default function PostAnimal({ctx}) {
             errorMsg: resMsgAnimalLatinName
         },
         {
+            type: 'upload',
+            class: 'form-control',
+            label: 'Animal Image',
+            is_required: true,
+            maxLength: 500,
+            handleChange: (event) => {
+                event = event.target.files[0]
+
+                if (event == null) return;
+                    const imageRef = ref(storage, `animal/${event.name + v4()}`)
+                    uploadBytes(imageRef, event).then((snapshot) => {
+                        getDownloadURL(snapshot.ref).then((url) => {
+                            setAnimalImgUrl(url)
+                        }
+                    );
+                });
+            },
+            errorMsg: resMsgAnimalImgUrl,
+        },
+        {
             type: 'select',
             class: 'form-control',
             label: 'Animal Region',
             placeholder: 'Type animal region',
             is_required: true,
-            is_obsecure: false,
             maxLength: 36,
             handleChange: (event) => {
                 setAnimalRegion(event.target.value)
@@ -131,6 +154,7 @@ export default function PostAnimal({ctx}) {
             const data = new FormData();
             data.append('animals_name', animalName);
             data.append('animals_latin_name', animalLatinName);
+            data.append('animals_img_url', animalImgUrl);
             data.append('animals_region', animalRegion);
             data.append('animals_zone', animalZone);
             data.append('animals_status', animalStatus);

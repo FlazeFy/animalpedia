@@ -13,7 +13,7 @@ export default function GetNewsContainer({builder}) {
         <div className={container.news_gridbox}>
             <div className='row'>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                    <img src={builder['news_image_url']} className={container.news_nebox_image} title={builder['news_image_url']}></img>
+                    <img src={builder['news_img_url']} className={container.news_nebox_image} title={builder['news_img_url']}></img>
                 </div>
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     <h4>{ucFirstWord(builder['news_name'])}</h4>

@@ -52,6 +52,12 @@ export default function GetAllNewsManage({ctx}) {
 
     const builder = [
         {
+            column_name: "News Image",
+            object_name: "news_img_url",
+            extra_desc: null,
+            type_content: "image"
+        },
+        {
             column_name: "News Name",
             object_name: "news_name",
             extra_desc: null
