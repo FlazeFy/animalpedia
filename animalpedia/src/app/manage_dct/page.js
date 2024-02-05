@@ -2,6 +2,7 @@
 
 // Components
 import GetNavbar from "@/components/bars/navbar"
+import GetFooter from "@/components/bars/footer"
 
 // Usecases
 import GetAllDctManage from "./usecases/getAllDictionary"
@@ -11,9 +12,12 @@ export default function ManageDct() {
     return <>
         <GetNavbar active="manage" subactive="manage_dct"/>
         <div className="content-grid">
-            <PostDct ctx="post_dictionary"/>
-            <hr></hr>
-            <GetAllDctManage ctx="get_all_dictionary_manage"/>
+            <div style={{minHeight:"100vh"}}>
+                <PostDct ctx="post_dictionary"/>
+                <hr></hr>
+                <GetAllDctManage ctx="get_all_dictionary_manage"/>
+            </div>
+            <GetFooter/>
         </div>
     </>
 }

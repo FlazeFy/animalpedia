@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 // Component
-import { getCleanTitleFromCtx } from '@/modules/helpers/converter'
+import { getCleanTitleFromCtx, ucFirstWord } from '@/modules/helpers/converter'
 
 // Modules
 import { getLocal } from '@/modules/storages/local'
@@ -52,7 +52,7 @@ export default function GetDropDownDctDynamic({elmt, url}) {
                     {
                         items.map((val, i, index) => {
                             return (
-                                <option key={i} value={val['dictionary_name']}>{val['dictionary_name']}</option>
+                                <option key={i} value={val['dictionary_name']}>{ucFirstWord(val['dictionary_name'])}</option>
                             );
                         })
                     }

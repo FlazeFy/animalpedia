@@ -61,7 +61,7 @@ body {
 .content-grid {
   width: 1280px;
   margin-inline: auto;
-  padding: var(--spaceXLG) 0;
+  padding: var(--spaceXLG) var(--spaceXLG) 0 0;
 }
 .grid-item {
   margin-bottom: var(--spaceLG);
