@@ -5,6 +5,7 @@ import GetNavbar from "@/components/bars/navbar";
 import GetBreakLine from "@/components/others/breakLine";
 import GetDctIntro from "./usecases/dct_intro";
 import GetFeature from "./usecases/feature";
+import GetFeedback from "./usecases/feedback";
 import GetWelcoming from "./usecases/welcoming";
 
 const animalRegion = [
@@ -40,6 +41,8 @@ const Home_Index = () => {
                 <GetDctIntro ctx="VARIOUS STATUS" img="http://localhost:3000/assets/background/status.png" items={animalStatus}/>
                 <GetBreakLine length={2}/>
                 <GetDctIntro ctx="VARIOUS CATEGORY" img="http://localhost:3000/assets/background/category.png" items={animalCategory}/>
+                <GetBreakLine length={2}/>
+                <GetFeedback/>
                 <GetBreakLine length={2}/>
             </div>
             <GetFooter/>
