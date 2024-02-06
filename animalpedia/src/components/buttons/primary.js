@@ -9,6 +9,6 @@ export default function GetButtonPrimary({refs, name, bg}) {
     const nameConv = ucFirstWord(name)
 
     return (
-        <button className={button.btn_primary} style={{background: bg}} href={refs}>{nameConv}</button>
+        <button className={button.btn_primary} style={{background: bg}} onClick={() => window.location.href = refs}>{nameConv}</button>
     )
 }

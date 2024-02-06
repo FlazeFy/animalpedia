@@ -9,6 +9,8 @@ import GetButtonPrimary from '../buttons/primary'
 import { convertDatetime, removeHTMLTags, ucFirstChar, ucFirstWord } from '@/modules/helpers/converter'
 
 export default function GetNewsContainer({builder}) {
+    const tags = JSON.parse(builder['news_tag'])
+
     return (
         <div className={container.news_gridbox}>
             <div className='row'>
@@ -18,8 +20,13 @@ export default function GetNewsContainer({builder}) {
                 <div className='col-lg-6 col-md-6 col-sm-12'>
                     <h4>{ucFirstWord(builder['news_name'])}</h4>
                     <div className='mt-3 mb-4'>
-                        <GetButtonTag slug="test" name="Tag"/>
-                        <GetButtonTag slug="test_2" name="Tag 2"/>
+                        {
+                            tags.map((val, i) => {
+                                return (
+                                    <GetButtonTag slug={"/news/tags/"+val['slug_name']} name={val['tag_name']}/>
+                                )
+                            })
+                        }
                     </div>
                     <div className={container.news_content_box}>
                         <p className={container.news_header_desc}>{ucFirstChar(removeHTMLTags(builder['news_body']))}</p>
@@ -29,7 +36,7 @@ export default function GetNewsContainer({builder}) {
                         <span className='me-3' title='Author'><FontAwesomeIcon icon={faUser}/> {builder['created_by']}</span>
                         <span><FontAwesomeIcon icon={faClock}/> {builder['news_time_read']} min Read</span>
                     </div>
-                    <GetButtonPrimary bg="var(--successBG)" refs="news/slug" name="See News"/>
+                    <GetButtonPrimary bg="var(--successBG)" refs={"/news/"+builder['news_slug']} name="See News"/>
                 </div>
             </div>
         </div>

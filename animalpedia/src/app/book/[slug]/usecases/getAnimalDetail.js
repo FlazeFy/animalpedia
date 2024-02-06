@@ -2,13 +2,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 
-// Modules
-import { removeHTMLTags, ucFirstChar } from '@/modules/helpers/converter'
-
-//Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import GetBreakLine from '@/components/others/breakLine'
 
 export default function GetAnimalDetail({ctx,slug}) {
     //Initial variable
@@ -46,8 +40,7 @@ export default function GetAnimalDetail({ctx,slug}) {
         )
     } else {
         return (
-            <div className='pt-5'> 
-                <a className='btn btn-danger rounded-pill py-3 px-5' href='/book'><FontAwesomeIcon icon={faArrowLeft} size="lg" className='me-3'/> Back</a>
+            <div className='pt-5'>
                 <div className='row my-4'>
                     <div className='col-lg-6 col-md-6 col-sm-12 text-center'>
                         <img className='img img-fluid rounded-circle' style={{maxWidth: "300px"}} src={item['animals_img_url']}/>
@@ -71,10 +64,12 @@ export default function GetAnimalDetail({ctx,slug}) {
                         <h3>{item['animals_status']}</h3>
                     </div>
                 </div>
+                <GetBreakLine length={2}/>
                 <div className='text-center text-white'>
                     <h3 className='text-white mb-4'>About Animal</h3>
-                    <p>{ucFirstChar(removeHTMLTags(item['animals_desc']))}</p>
+                    <div className='desc-holder' dangerouslySetInnerHTML={{ __html: item['animals_desc'] }}></div>
                 </div>
+                <GetBreakLine length={4}/>
             </div>
         )
     }
