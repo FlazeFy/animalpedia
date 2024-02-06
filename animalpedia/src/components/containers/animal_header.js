@@ -7,7 +7,7 @@ import { faSkull, faWarning } from "@fortawesome/free-solid-svg-icons"
 
 export default function GetAnimalHeaderContainer({builder}) {
     return (
-        <div className={container.animal_gridbox}>
+        <a className={container.animal_gridbox} href={'book/'+builder['animals_slug']}>
             <div className={container.animal_hebox}>
                 <div className={container.animal_hebox_props}>
                     {
@@ -37,7 +37,7 @@ export default function GetAnimalHeaderContainer({builder}) {
             </div>
             <h4>{builder['animals_name']}</h4>
             <h6>{builder['animals_latin_name']}</h6>
-        </div>
+        </a>
     )
 }
   
