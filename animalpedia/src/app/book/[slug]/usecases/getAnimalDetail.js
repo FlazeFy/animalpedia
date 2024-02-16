@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect } from "react"
 
 import GetBreakLine from '@/components/others/breakLine'
+import { getLocal } from '@/modules/storages/local'
 
 export default function GetAnimalDetail({ctx,slug}) {
     //Initial variable
