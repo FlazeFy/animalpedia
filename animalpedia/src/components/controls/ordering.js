@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 export default function GetOrdering({ctx}) {
     function navigate(ctx, ord){
         sessionStorage.setItem(`Table_order_${ctx}`, ord)
+        window.location.reload(true)
         toast.success(<CustomToast msg={ctx + " filtered"} />)
     }
 

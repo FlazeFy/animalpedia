@@ -14,7 +14,18 @@ export default function GetAllNewsHeader({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:1323/api/v1/news/desc?page=1`)
+        //Default config
+        const keyPage = sessionStorage.getItem("Table_News")
+        const keyOrder = sessionStorage.getItem("Table_order_News")
+
+        if(keyPage == null){
+            sessionStorage.setItem("Table_News", "1");
+        }
+        if(keyOrder == null){
+            sessionStorage.setItem("Table_order_News", "asc");
+        }
+
+        fetch(`http://127.0.0.1:1323/api/v1/news/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

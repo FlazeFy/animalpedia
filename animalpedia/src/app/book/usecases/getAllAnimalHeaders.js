@@ -14,7 +14,18 @@ export default function GetAllAnimalHeader({ctx}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:1323/api/v1/animal/desc?page=1`)
+        //Default config
+        const keyPage = sessionStorage.getItem("Table_Animal")
+        const keyOrder = sessionStorage.getItem("Table_order_Animal")
+
+        if(keyPage == null){
+            sessionStorage.setItem("Table_Animal", "1");
+        }
+        if(keyOrder == null){
+            sessionStorage.setItem("Table_order_Animal", "asc");
+        }
+
+        fetch(`http://127.0.0.1:1323/api/v1/animal/${keyOrder}?page=${keyPage}`)
         .then(res => res.json())
             .then(
             (result) => {

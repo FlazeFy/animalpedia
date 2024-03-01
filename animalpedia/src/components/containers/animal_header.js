@@ -4,6 +4,7 @@ import container from './containers.module.css'
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSkull, faWarning } from "@fortawesome/free-solid-svg-icons"
+import { ucFirstWord } from '@/modules/helpers/converter'
 
 export default function GetAnimalHeaderContainer({builder}) {
     return (
@@ -35,8 +36,8 @@ export default function GetAnimalHeaderContainer({builder}) {
                 </div>
                 <img className={container.animal_hebox_img} src={builder['animals_img_url']}></img>
             </div>
-            <h4>{builder['animals_name']}</h4>
-            <h6>{builder['animals_latin_name']}</h6>
+            <h4>{ucFirstWord(builder['animals_name'])}</h4>
+            <h6>{ucFirstWord(builder['animals_latin_name'])}</h6>
         </a>
     )
 }

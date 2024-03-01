@@ -12,10 +12,18 @@
     cursor: pointer;
     margin-bottom: var(--spaceLG);
     position: relative;
+    -webkit-transition: all 0.4s !important;
+    -o-transition: all 0.4s !important;
+    transition: all 0.4s !important;
 }
 .animal_hebox_img {
-    width: 100%;
+    width: 280px;
+    height: 280px;
     border-radius: var(--roundedCircle);
+}
+.animal_gridbox:hover .animal_hebox {
+    transform: scale(1.075);
+    box-shadow: rgba(249, 170, 12, 0.35) 0px 5px 15px;
 }
 .animal_gridbox h4 {
     font-weight: bold;
@@ -47,6 +55,13 @@
     border-radius: var(--roundedJumbo);
     padding: var(--spaceMD);
     margin-bottom: var(--spaceLG);
+    -webkit-transition: all 0.4s !important;
+    -o-transition: all 0.4s !important;
+    transition: all 0.4s !important;
+}
+.news_gridbox:hover {
+    transform: scale(1.035);
+    box-shadow: rgba(249, 170, 12, 0.35) 0px 5px 15px;
 }
 .news_nebox_image {
     width: 100%;
