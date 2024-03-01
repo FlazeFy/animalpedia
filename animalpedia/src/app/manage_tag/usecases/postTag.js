@@ -12,41 +12,26 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faXmark } from "@fortawesome/free-solid-svg-icons"
 
-export default function PostDct({ctx}) {
+export default function PostTag({ctx}) {
     //Initial variable
-    const [dctName, setDctName] = useState("")
-    const [dctType, setDctType] = useState("")
+    const [tagName, setTagName] = useState("")
 
-    const [resMsgDctName, setResMsgDctName] = useState("")
-    const [resMsgDctType, setResMsgDctType] = useState("")
+    const [resMsgTagName, setResMsgTagName] = useState("")
     const [resMsgAll, setResMsgAll] = useState("")
 
     const builder = [
         {
             type: 'text',
             class: 'form-control',
-            label: 'Dictionary Name',
-            placeholder: 'Type dictionary name',
+            label: 'Tag Name',
+            placeholder: 'Type tag name',
             is_required: true,
             is_obsecure: false,
             maxLength: 75,
             handleChange: (event) => {
-                setDctName(event.target.value)
+                setTagName(event.target.value)
             },
-            errorMsg: resMsgDctName
-        },
-        {
-            type: 'text',
-            class: 'form-control',
-            label: 'Dictionary Type',
-            placeholder: 'Type dictionary type',
-            is_required: true,
-            is_obsecure: false,
-            maxLength: 144,
-            handleChange: (event) => {
-                setDctType(event.target.value)
-            },
-            errorMsg: resMsgDctType
+            errorMsg: resMsgTagName
         },
         {
             type: 'submit',
@@ -65,10 +50,9 @@ export default function PostDct({ctx}) {
     const handleSubmit = async (e) => {
         try {
             const data = new FormData();
-            data.append('dictionaries_name', dctName);
-            data.append('dictionaries_type', dctType);
+            data.append('tags_name', tagName);
             
-            const response = await Axios.post("http://127.0.0.1:1323/api/v1/dct", data, {
+            const response = await Axios.post("http://127.0.0.1:1323/api/v1/tag", data, {
                 headers: {
                   'Content-Type': 'multipart/form-data'
                 }

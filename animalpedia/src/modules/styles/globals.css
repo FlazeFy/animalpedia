@@ -114,3 +114,13 @@ h1, h2, h3, h4, h5, h6 {
   fill: var(--whiteColor) !important;
   font-size: var(--textMD);
 }
+.apexcharts-series.apexcharts-pie-series, .apexcharts-series path {
+  -webkit-transition: all 0.4s !important;
+  -o-transition: all 0.4s !important;
+  transition: all 0.4s !important;
+  cursor: pointer;
+}
+.apexcharts-series.apexcharts-pie-series:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+}
