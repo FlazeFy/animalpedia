@@ -1,7 +1,4 @@
-//Font awesome classicon
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignIn } from "@fortawesome/free-solid-svg-icons"
+import GetSignOut from "./usecases/get_sign_out";
 
 export default function GetNavbar({active, subactive}) {
     function getActive(val, curr){
@@ -37,9 +34,7 @@ export default function GetNavbar({active, subactive}) {
                 </li>
                 <li><a className={"nav-link " + getActive(active,"about")} href="/about">About</a></li>
                 <li>
-                    <a className="nav-link bg-success text-white" href="/login">
-                        <FontAwesomeIcon icon={faSignIn} size="xl" title="Sign In as Admin"/>
-                    </a>
+                    <GetSignOut/>
                 </li>
             </ul>
             <i className="fa-solid fa-bars mobile-nav-toggle" title="Open NavBar"></i>
