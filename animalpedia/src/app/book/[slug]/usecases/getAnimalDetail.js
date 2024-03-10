@@ -45,6 +45,9 @@ export default function GetAnimalDetail({ctx,slug}) {
                 <div className='row my-4'>
                     <div className='col-lg-6 col-md-6 col-sm-12 text-center'>
                         <img className='img img-fluid rounded-circle' style={{maxWidth: "300px"}} src={item['animals_img_url']}/>
+                        {
+                            
+                        }
                         <h1 className='mb-1 mt-4'>{item['animals_name']}</h1>
                         <h5 className='fst-italic text-white'>{item['animals_latin_name']}</h5>
                     </div>
