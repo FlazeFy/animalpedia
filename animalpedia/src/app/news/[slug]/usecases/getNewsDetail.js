@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 
 import GetBreakLine from '@/components/others/breakLine'
 import GetButtonTag from '@/components/buttons/tag'
+import DeleteCatalog from '@/components/others/deleteCatalog'
 
 export default function GetNewsDetail({ctx,slug}) {
     //Initial variable
@@ -43,24 +44,27 @@ export default function GetNewsDetail({ctx,slug}) {
         const tags = JSON.parse(item['news_tag'])
 
         return (
-            <div className='pt-5 text-center'>
-                <img className='img img-fluid' style={{maxWidth: "720px", borderRadius:"var(--roundedJumbo)"}} src={item['news_img_url']}/>
-                <h1 className='mb-1 mt-4'>{item['news_name']}</h1>
-                <a className='btn btn-secondary rounded-pill' style={{fontSize:"var(--textXMD)"}}>{item['news_time_read']} min to read</a>
-                <GetBreakLine length={3}/>
-                <div className='text-center text-white'>
-                    <div className='desc-holder' dangerouslySetInnerHTML={{ __html: item['news_body'] }}></div>
+            <>
+                <DeleteCatalog slug={item['news_slug']} isDeleted={item['deleted_at'] == "" ? false : true} type="news"/>
+                <div className='pt-5 text-center'>
+                    <img className='img img-fluid' style={{maxWidth: "720px", borderRadius:"var(--roundedJumbo)"}} src={item['news_img_url']}/>
+                    <h1 className='mb-1 mt-4'>{item['news_name']}</h1>
+                    <a className='btn btn-secondary rounded-pill' style={{fontSize:"var(--textXMD)"}}>{item['news_time_read']} min to read</a>
+                    <GetBreakLine length={3}/>
+                    <div className='text-center text-white'>
+                        <div className='desc-holder' dangerouslySetInnerHTML={{ __html: item['news_body'] }}></div>
+                    </div>
+                    <GetBreakLine length={2}/>
+                    <h5 className='text-white mb-4'>Related Tag</h5>
+                    {
+                        tags.map((val, i) => {
+                            return (
+                                <GetButtonTag slug={"/news/tags/"+val['slug_name']} name={val['tag_name']}/>
+                            )
+                        })
+                    }
                 </div>
-                <GetBreakLine length={2}/>
-                <h5 className='text-white mb-4'>Related Tag</h5>
-                {
-                    tags.map((val, i) => {
-                        return (
-                            <GetButtonTag slug={"/news/tags/"+val['slug_name']} name={val['tag_name']}/>
-                        )
-                    })
-                }
-            </div>
+            </>
         )
     }
 }

@@ -8,7 +8,7 @@ import GetAnimalDetail from "./usecases/getAnimalDetail"
 //Font awesome classicon
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import PostEditMode from "@/components/others/postEditMode"
 
 export default function DetailPage({ params }) {
