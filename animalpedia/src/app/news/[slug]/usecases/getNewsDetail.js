@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import GetBreakLine from '@/components/others/breakLine'
 import GetButtonTag from '@/components/buttons/tag'
 import DeleteCatalog from '@/components/others/deleteCatalog'
+import RecoverCatalog from '@/components/others/recoverCatalog'
 
 export default function GetNewsDetail({ctx,slug}) {
     //Initial variable
@@ -46,6 +47,9 @@ export default function GetNewsDetail({ctx,slug}) {
         return (
             <>
                 <DeleteCatalog slug={item['news_slug']} isDeleted={item['deleted_at'] == "" ? false : true} type="news"/>
+                {
+                    item['deleted_at'] != "" ? <RecoverCatalog slug={item['news_slug']} type="news"/> : <></>
+                }
                 <div className='pt-5 text-center'>
                     <img className='img img-fluid' style={{maxWidth: "720px", borderRadius:"var(--roundedJumbo)"}} src={item['news_img_url']}/>
                     <h1 className='mb-1 mt-4'>{item['news_name']}</h1>

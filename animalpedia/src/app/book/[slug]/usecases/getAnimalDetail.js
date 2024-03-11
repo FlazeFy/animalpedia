@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import GetBreakLine from '@/components/others/breakLine'
 import { getLocal } from '@/modules/storages/local'
 import DeleteCatalog from '@/components/others/deleteCatalog'
+import RecoverCatalog from '@/components/others/recoverCatalog'
 
 export default function GetAnimalDetail({ctx,slug}) {
     //Initial variable
@@ -44,6 +45,9 @@ export default function GetAnimalDetail({ctx,slug}) {
         return (
             <>
                 <DeleteCatalog slug={item['animals_slug']} isDeleted={item['deleted_at'] == "" ? false : true} type="animal"/>
+                {
+                    item['deleted_at'] != "" ? <RecoverCatalog slug={item['animals_slug']} type="animal"/> : <></>
+                }
                 <div className='pt-5'>
                     <div className='row my-4'>
                         <div className='col-lg-6 col-md-6 col-sm-12 text-center'>
