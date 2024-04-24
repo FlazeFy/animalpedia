@@ -3,7 +3,7 @@
     background: var(--infoBG);
     color: var(--whiteColor);
     text-decoration: none;
-    padding: var(--spaceXSM) var(--spaceSM);
+    padding: var(--spaceMini) var(--spaceXSM);
     margin-right: var(--spaceXXSM);
     border-radius: var(--roundedSM);
 }

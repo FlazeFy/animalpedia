@@ -41,3 +41,13 @@
     color: var(--darkColor) !important;
     background: var(--primaryColor) !important;
 }
+.btn-selected-tag {
+    color: var(--whiteColor) !important;
+}
+.btn-selected-tag:hover {
+    color: var(--whiteColor);
+    background: var(--warningBG) !important;
+}
+.btn-selected-tag:hover span {
+    color: var(--whiteColor) !important;
+}

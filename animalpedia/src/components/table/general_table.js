@@ -53,7 +53,7 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                 <tr key={i}>
                                 {
                                     builder.map((build, j, ins) => {
-                                        if(item[build['column_name']] != 'Manage' && item[build['object_name']] != null){
+                                        if(item[build['column_name']] != 'Manage' && item[build['object_name']] != null || build['type_content']){
                                             if(build['type_content'] == "html"){
                                                 return (
                                                     <th>{ucFirstChar(removeHTMLTags(item[build['object_name']]))}</th>
@@ -75,6 +75,12 @@ export default function GetGeneralTable({builder, items, maxPage, currentPage, c
                                                 return (
                                                     <th className='p-3'>
                                                         <img className='img img-fluid img-profile' style={{width:"75px", height:"75px", borderWidth:"2.5px"}} src={item[build['object_name']]}/>
+                                                    </th>
+                                                );
+                                            } else if(build['type_content'] == "page"){
+                                                return (
+                                                    <th className='p-3'>
+                                                        <a className='btn btn-primary px-3 py-2' href={build['extra_desc']+'/'+item[build['object_name']]}>{build['object_title']}</a>
                                                     </th>
                                                 );
                                             } else {

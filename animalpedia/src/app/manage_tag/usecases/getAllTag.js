@@ -8,6 +8,11 @@ import { getCleanTitleFromCtx } from '../../../modules/helpers/converter'
 // Modules
 import { getLocal, storeLocal } from '../../../modules/storages/local'
 
+//Font awesome classicon
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+
 export default function GetAllTagManage({ctx}) {
     //Initial variable
     const [error, setError] = useState(null)
@@ -58,8 +63,10 @@ export default function GetAllTagManage({ctx}) {
         },
         {
             column_name: "Tag Used",
-            object_name: "tags_used",
-            extra_desc: null,
+            object_name: "tags_slug",
+            extra_desc: "/tag/",
+            type_content: 'page',
+            object_title: <><FontAwesomeIcon icon={faMagnifyingGlass} size="lg"/> Search on content</>
         },
         {
             column_name: "Manage",
