@@ -1,4 +1,6 @@
 "use client"
+import Axios from 'axios'
+
 import React from 'react'
 import { useState, useEffect } from "react"
 
@@ -6,12 +8,26 @@ import GetBreakLine from '@/components/others/breakLine'
 import GetButtonTag from '@/components/buttons/tag'
 import DeleteCatalog from '@/components/others/deleteCatalog'
 import RecoverCatalog from '@/components/others/recoverCatalog'
+import { getLocal } from '@/modules/storages/local'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import { toast } from 'react-toastify'
+//Font awesome classicon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+import CustomToast from '@/components/modals/toast'
 
 export default function GetNewsDetail({ctx,slug}) {
     //Initial variable
+    const keyToken = getLocal("token_key")
     const [error, setError] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const [item, setItems] = useState(null)
+
+    // Editable
+    const [body, setNewsBody] = useState(null)
+    const [title, setNewsTitle] = useState(null)
+    const [timeRead, setNewsTimeRead] = useState(null)
 
     useEffect(() => {
         fetch(`http://127.0.0.1:1323/api/v1/news/open/`+slug)
@@ -19,7 +35,11 @@ export default function GetNewsDetail({ctx,slug}) {
             .then(
             (result) => {
                 setIsLoaded(true)
-                setItems(result.data)        
+                setItems(result.data)       
+                
+                setNewsTimeRead(result.data['news_time_read'])
+                setNewsTitle(result.data['news_name'])
+                setNewsBody(result.data['news_body'])
             },
             (error) => {
                 if(getLocal(ctx + "_sess") !== undefined){
@@ -32,6 +52,32 @@ export default function GetNewsDetail({ctx,slug}) {
             }
         )
     },[])
+
+    // Services
+    const handleSubmit = async (e) => {
+        try {
+            const data = new FormData()
+            data.append('news_name', title)
+            data.append('news_body', body)
+            data.append('news_time_read', timeRead)
+            
+            const response = await Axios.put("http://127.0.0.1:1323/api/v1/news/by/"+slug, data, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                  'Authorization': `Bearer ${keyToken}`
+                }
+            })
+            if(response.status != 200){
+                window.location.reload(false)
+                return response.data.message
+            } else {
+                toast.success(<CustomToast msg={ctx + " created"} />)
+            }
+        } catch (error) {
+            // setResMsgAll(error)
+            toast.error(<CustomToast msg={error} />)
+        }
+    }
 
     if (error) {
         return <div>Error: {error.message}</div>
@@ -50,13 +96,40 @@ export default function GetNewsDetail({ctx,slug}) {
                 {
                     item['deleted_at'] != "" ? <RecoverCatalog slug={item['news_slug']} type="news"/> : <></>
                 }
+                {
+                    getLocal("edit_mode_news") === 'true' ?
+                        <button className='btn btn-success rounded-pill px-4 py-3 ms-3' onClick={handleSubmit}><FontAwesomeIcon icon={faFloppyDisk} size="xl"/> Save Changes</button>
+                    :
+                        <></>
+                }
                 <div className='pt-5 text-center'>
                     <img className='img img-fluid' style={{maxWidth: "720px", borderRadius:"var(--roundedJumbo)"}} src={item['news_img_url']}/>
-                    <h1 className='mb-1 mt-4'>{item['news_name']}</h1>
-                    <a className='btn btn-secondary rounded-pill' style={{fontSize:"var(--textXMD)"}}>{item['news_time_read']} min to read</a>
-                    <GetBreakLine length={3}/>
+                    {
+                        getLocal("edit_mode_news") === 'true' ?
+                            <div className='row mt-3 mb-1'>
+                                <div className='col-lg-10 col-md-9 col-sm-9'>
+                                    <lable className='text-white mb-1'>Title</lable>
+                                    <input type="text" defaultValue={title} onChange={(e)=>setNewsTitle(e.target.value)} className="form-control"></input>
+                                </div>
+                                <div className='col-lg-2 col-md-3 col-sm-3'>
+                                    <lable className='text-white mb-1'>Time Read</lable>
+                                    <input type="number" min="1" max="360" defaultValue={timeRead} onChange={(e)=>setNewsTimeRead(e.target.value)}  className="form-control"></input>
+                                </div>
+                            </div>
+                        :
+                            <>
+                                <h1 className='mb-1 mt-4'>{title}</h1>
+                                <a className='btn btn-secondary rounded-pill' style={{fontSize:"var(--textXMD)"}}>{timeRead} min to read</a>
+                            </>
+                    }
+                    <GetBreakLine length={ getLocal("edit_mode_news") === 'true' ? 1 : 3}/>
                     <div className='text-center text-white'>
-                        <div className='desc-holder' dangerouslySetInnerHTML={{ __html: item['news_body'] }}></div>
+                    {
+                        getLocal("edit_mode_news") === 'true' ?
+                            <ReactQuill value={item['news_body']} onChange={(e) => setNewsBody(e.htmlValue)} style={{ height: '600px' }} />
+                        :
+                            <div className='desc-holder' dangerouslySetInnerHTML={{ __html: body }}></div>
+                    }
                     </div>
                     <GetBreakLine length={2}/>
                     <h5 className='text-white mb-4'>Related Tag</h5>

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const CustomToast = ({ msg }) => {
   return (
     <div>
-      <p className='text-success'>{msg}</p>
+      <p className='text-success'>{msg.toString()}</p>
     </div>
   );
 };
