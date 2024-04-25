@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import PostEditMode from "@/components/others/postEditMode"
 import GetContentComment from "@/components/others/getContentComment"
+import GetContentSource from "@/components/others/getContentSource"
 
 export default function DetailPage({ params }) {
   return <>
@@ -22,13 +23,14 @@ export default function DetailPage({ params }) {
           <PostEditMode type="animal"/>
           <GetAnimalDetail ctx="get_animal_detail" slug={params.slug}/>
           <div className='text-center text-white'>
-            <div className="row">
+            <div className="row mt-3">
               <div className="col">
                 <h3 className='text-white mb-4'>Comments</h3>
                 <GetContentComment slug={params.slug} type="animals"/>
               </div>
               <div className="col">
                 <h3 className='text-white mb-4'>References</h3>
+                <GetContentSource slug={params.slug} type="animals"/>
               </div>
             </div>
           </div>
