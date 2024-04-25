@@ -12,6 +12,7 @@ import { getLocal } from '@/modules/storages/local'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { toast } from 'react-toastify'
+
 //Font awesome classicon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
@@ -25,9 +26,11 @@ export default function GetNewsDetail({ctx,slug}) {
     const [item, setItems] = useState(null)
 
     // Editable
-    const [body, setNewsBody] = useState(null)
-    const [title, setNewsTitle] = useState(null)
-    const [timeRead, setNewsTimeRead] = useState(null)
+    const [body, setNewsBody] = useState("")
+    const [backUp, setNewsBodyBackUp] = useState("")
+
+    const [title, setNewsTitle] = useState("")
+    const [timeRead, setNewsTimeRead] = useState("")
 
     useEffect(() => {
         fetch(`http://127.0.0.1:1323/api/v1/news/open/`+slug)
@@ -71,7 +74,7 @@ export default function GetNewsDetail({ctx,slug}) {
                 window.location.reload(false)
                 return response.data.message
             } else {
-                toast.success(<CustomToast msg={ctx + " created"} />)
+                toast.success(<CustomToast msg={title+" updated"} />)
             }
         } catch (error) {
             // setResMsgAll(error)
@@ -126,7 +129,11 @@ export default function GetNewsDetail({ctx,slug}) {
                     <div className='text-center text-white'>
                     {
                         getLocal("edit_mode_news") === 'true' ?
-                            <ReactQuill value={item['news_body']} onChange={(e) => setNewsBody(e.htmlValue)} style={{ height: '600px' }} />
+                            <ReactQuill value={body} onChange={(content, delta, source, editor) => {
+                                setNewsBody(editor.getHTML()); 
+                                setNewsBodyBackUp(content);
+                            }}
+                            style={{ height: '600px' }} />
                         :
                             <div className='desc-holder' dangerouslySetInnerHTML={{ __html: body }}></div>
                     }
