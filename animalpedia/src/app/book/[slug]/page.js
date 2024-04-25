@@ -12,6 +12,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import PostEditMode from "@/components/others/postEditMode"
 import GetContentComment from "@/components/others/getContentComment"
 import GetContentSource from "@/components/others/getContentSource"
+import GetAnimalMaps from "./usecases/getAnimalMaps"
 
 export default function DetailPage({ params }) {
   return <>
@@ -33,6 +34,7 @@ export default function DetailPage({ params }) {
                 <GetContentSource slug={params.slug} type="animals"/>
               </div>
             </div>
+            <GetAnimalMaps slug={params.slug}/>
           </div>
         </div>
         <GetFooter/>

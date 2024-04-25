@@ -172,3 +172,16 @@ h1, h2, h3, h4, h5, h6 {
 .Toastify__progress-bar {
   background: var(--primaryColor) !important;
 }
+
+/* Maps */
+.worldmap__figure-container {
+  background: var(--blackColor) !important;
+}
+.worldmap__figure-container path {
+  fill: var(--primaryColor) !important; 
+  /* fill-opacity: 0.15 !important;  */
+  stroke: var(--whiteColor) !important; 
+  stroke-width: 1.5; 
+  stroke-opacity: 0.5 !important; 
+  cursor: pointer;
+}
