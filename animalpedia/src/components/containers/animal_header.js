@@ -9,8 +9,8 @@ import { ucFirstWord } from '@/modules/helpers/converter'
 export default function GetAnimalHeaderContainer({builder}) {
     return (
         <a className={container.animal_gridbox} href={'book/'+builder['animals_slug']}>
-            <div className={container.animal_hebox}>
-                <div className={container.animal_hebox_props}>
+            <div className={container.animal_hebox} style={{border: builder['animals_img_url'] != "" ? "var(--spaceXXSM) solid var(--primaryColor)" : "var(--spaceXXSM) solid var(--warningBG)"}}>
+                <div className={container.animal_hebox_props} style={{border: builder['animals_img_url'] != "" ? "3.5px solid var(--primaryColor)" : "3.5px solid var(--warningBG)"}}>
                     {
                         builder['animals_zone'] == "Africa" ?
                             <img src="http://localhost:3000/assets/icons/zone_africa.png" className={container.animal_zone_icon} title="Africa"></img>
@@ -34,7 +34,7 @@ export default function GetAnimalHeaderContainer({builder}) {
                             <></>
                     }
                 </div>
-                <img className={container.animal_hebox_img} src={builder['animals_img_url']}></img>
+                <img className={container.animal_hebox_img} src={builder['animals_img_url'] != "" ? builder['animals_img_url'] : "http://localhost:3000/assets/icons/no_image_animal.png"}></img>
             </div>
             <h4>{ucFirstWord(builder['animals_name'])}</h4>
             <h6>{ucFirstWord(builder['animals_latin_name'])}</h6>

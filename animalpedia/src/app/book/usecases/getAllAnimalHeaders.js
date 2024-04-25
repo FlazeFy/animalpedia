@@ -55,7 +55,7 @@ export default function GetAllAnimalHeader({ctx}) {
     } else {
         return (
             <div className='row'> 
-                 {
+                {
                     items.map((data, i, idx) => {
                         return (
                             <div className='col-lg-3 col-md-4 col-sm-12 mx-auto' key={i}>

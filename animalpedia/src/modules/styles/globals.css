@@ -71,6 +71,9 @@ body {
   margin-top: var(--spaceLG);
   border: var(--spaceXSM) solid var(--primaryColor);
 }
+.img-msg {
+  max-width: 200px !important;
+}
 
 .form-lable {
   font-weight: 500;
@@ -103,6 +106,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .desc-holder a{
   color: var(--successBG) !important;
+}
+.comment-box {
+  text-align: start;
+  border: 2px solid var(--darkColor);
+  padding: var(--spaceMD);
+  border-radius: var(--roundedLG);
 }
 
 /* Apexchart */

@@ -138,7 +138,7 @@ export default function GetAnimalDetail({ctx,slug}) {
                 <div className='pt-5'>
                     <div className='row my-4'>
                         <div className='col-lg-6 col-md-6 col-sm-12 text-center'>
-                            <img className='img img-fluid rounded-circle mb-2' style={{maxWidth: "300px"}} src={item['animals_img_url']}/><br></br>
+                            <img className='img img-fluid rounded-circle mb-2' style={{maxWidth: "300px"}} src={item['animals_img_url'] != '' ? item['animals_img_url'] : "http://localhost:3000/assets/icons/no_image_animal.png"}/><br></br>
                             {
                                 getLocal("edit_mode_animal") === 'true' ?
                                     <>
@@ -201,7 +201,7 @@ export default function GetAnimalDetail({ctx,slug}) {
                                 <div className='desc-holder' dangerouslySetInnerHTML={{ __html: animalDesc }}></div>
                         }
                     </div>
-                    <GetBreakLine length={4}/>
+                    <GetBreakLine length={2}/>
                 </div>
             </>
         )

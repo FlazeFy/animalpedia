@@ -8,7 +8,6 @@
 }
 .animal_hebox {
     border-radius: var(--roundedCircle);
-    border: var(--spaceXXSM) solid var(--primaryColor);
     cursor: pointer;
     margin-bottom: var(--spaceLG);
     position: relative;
@@ -42,7 +41,6 @@
     background: var(--successBG);
     padding: var(--spaceXSM) var(--spaceSM);
     border-radius: var(--roundedMD);
-    border: 3.5px solid var(--primaryColor);
 }
 .animal_zone_icon {
     height: 36px;
