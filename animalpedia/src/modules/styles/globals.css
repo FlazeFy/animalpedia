@@ -113,6 +113,24 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--spaceMD);
   border-radius: var(--roundedLG);
 }
+.select-animal-box {
+  border: 2px solid var(--darkColor);
+  padding: var(--spaceMD);
+  border-radius: var(--roundedLG);
+  margin-bottom: var(--spaceMD);
+  -webkit-transition: all 0.4s !important;
+  -o-transition: all 0.4s !important;
+  transition: all 0.4s !important;
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+  background: var(--blackColor);
+}
+.select-animal-box:hover {
+  transform: scale(1.05);
+  border: 2px solid var(--primaryColor);
+  box-shadow: rgba(249, 170, 12, 0.5) 0px 4px 12px;
+}
 
 /* Apexchart */
 .apexcharts-legend-text  {

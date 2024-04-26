@@ -15,6 +15,7 @@ export default function GetNavbar({active, subactive}) {
                 <li><a className={"nav-link " + getActive(active,"home")} href="/">Home</a></li>
                 <li><a className={"nav-link " + getActive(active,"book")} href="/book">Book</a></li>
                 <li><a className={"nav-link " + getActive(active,"news")} href="/news">News</a></li>
+                <li><a className={"nav-link " + getActive(active,"maps")} href="/maps">Maps</a></li>
                 <li>
                     <a className={"nav-link mb-2 " + getActive(active,"stats")} data-bs-toggle="collapse" href="#collapseStats">Stats</a>
                     <div className="collapse" id="collapseStats">
